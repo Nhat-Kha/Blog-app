@@ -29,7 +29,7 @@ app.listen(3000, () => {
   console.log("Server is connect port 3000");
 });
 
-app.get("/", (req, res) => res.send("App worked successfully"));
+app.get("/", (req, res) => res.send({ message: "App worked successfully" }));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
