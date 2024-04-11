@@ -18,3 +18,11 @@ My blog is a platform where I express myself and share my ideas with the world. 
 - **Search Functionality**: Search for specific posts or topics using the built-in search functionality.
 - **Customization Options**: Customize the look and feel of the blog through themes, fonts, and color schemes.
 
+## Technologies Used
+
+- **Frontend**: JavaScript, React.js, tailwindCSS
+- **Backend**: Node.js, Express.js, MongoDB
+- **Authentication**: JSON Web Tokens (JWT)
+- **Database**: MongoDB Atlas + Compass
+
+## Getting Started
