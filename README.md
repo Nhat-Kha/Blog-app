@@ -26,3 +26,26 @@ My blog is a platform where I express myself and share my ideas with the world. 
 - **Database**: MongoDB Atlas + Compass
 
 ## Getting Started
+
+To get started with running this blog app locally or deploying it to your own server, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install dependencies using `npm install` or `yarn install`.
+3. Set up your MongoDB database and configure the connection string.
+4. Create a `.env` file in the root directory and add necessary environment variables.
+5. Start the development server using `npm start` or `yarn start`.
+
+## Contribution
+
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. Be sure to follow the coding conventions and guidelines outlined in the project.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md).
+
+## Contact
+
+If you have any questions, suggestions, or feedback, feel free to reach out to me:
+
+- Email: [nhatkha06299@email.com](mailto:your@email.com)
+- Twitter: [@Ricky_Nguyen](https://twitter.com/KhaNguyen020103)
