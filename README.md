@@ -49,3 +49,5 @@ If you have any questions, suggestions, or feedback, feel free to reach out to m
 
 - Email: [nhatkha06299@email.com](mailto:your@email.com)
 - Twitter: [@Ricky_Nguyen](https://twitter.com/KhaNguyen020103)
+
+Happy reading!
