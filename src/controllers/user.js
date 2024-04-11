@@ -72,7 +72,7 @@ const getUser = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res, next) => {
+const updatedUser = async (req, res, next) => {
   if (req.user.id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to update this user"));
   }
@@ -113,7 +113,7 @@ const updateUser = async (req, res, next) => {
       },
       { new: true }
     );
-    const { password, ...rest } = updatedUser._doc;
+    const { password, ...rest } = updateUser._doc;
     res.status(200).json(rest);
   } catch (error) {
     next(error);
@@ -132,11 +132,23 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
+const signout = async (req, res, next) => {
+  try {
+    res
+      .clearCookie("access_token")
+      .status(200)
+      .json("User has been signed out");
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   Test,
   getUser,
   getAllUser,
   getAllUserOfAdmin,
-  updateUser,
+  updatedUser,
   deleteUser,
+  signout,
 };
