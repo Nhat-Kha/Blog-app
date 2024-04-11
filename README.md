@@ -39,10 +39,6 @@ To get started with running this blog app locally or deploying it to your own se
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request with your changes. Be sure to follow the coding conventions and guidelines outlined in the project.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE.md).
-
 ## Contact
 
 If you have any questions, suggestions, or feedback, feel free to reach out to me:
