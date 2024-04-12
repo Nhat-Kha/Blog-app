@@ -1,6 +1,7 @@
 const User = require("../model/user");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const errorHandler = require("../utils/error");
 
 const signup = async (req, res, next) => {
   const { userName, email, password } = req.body;
@@ -16,17 +17,17 @@ const signup = async (req, res, next) => {
     next(errorHandler(400, "All fields are required"));
   }
 
-  const handlePassword = bcrypt.hashSync(password, 10);
+  const hashedPassword = bcryptjs.hashSync(password, 10);
 
   const newUser = new User({
     userName,
     email,
-    password: handlePassword,
+    password: hashedPassword,
   });
 
   try {
     await newUser.save();
-    res.json("SignUp successfully");
+    res.json("Signup successful");
   } catch (error) {
     next(error);
   }
