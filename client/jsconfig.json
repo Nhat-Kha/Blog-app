@@ -3,7 +3,7 @@
     "baseUrl": "src/",
     "sourceMap": false,
     "paths": {
-      "@/*": ["*"]
+      "../*": ["*"]
     },
     "strict": true
   },

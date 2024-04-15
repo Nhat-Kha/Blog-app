@@ -7,6 +7,8 @@ import {
   signInFailure,
 } from "../redux/user/userSlice";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
+
+import OAuth from "../components/OAuth";
 import apiList from "../libs/apiList";
 
 export default function SignIn() {
@@ -31,10 +33,10 @@ export default function SignIn() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+
       if (data.success === false) {
         dispatch(signInFailure(data.message));
       }
-
       if (res.ok) {
         dispatch(signInSuccess(data));
         navigate("/");
@@ -96,7 +98,7 @@ export default function SignIn() {
                 "Sign In"
               )}
             </Button>
-            {/* <OAuth /> */}
+            <OAuth />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Dont Have an account?</span>

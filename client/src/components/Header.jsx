@@ -51,6 +51,8 @@ export default function Header() {
     navigate(`/search/${searchQuery}`);
   };
 
+  console.log("currentUser: ", currentUser);
+
   return (
     <Navbar className="border-b-2">
       <Link
@@ -84,23 +86,34 @@ export default function Header() {
         >
           {theme === "light" ? <FaSun /> : <FaMoon />}
         </Button>
-        {currentUser ? (
+        {currentUser && currentUser.rest ? (
           <Dropdown
             arrowIcon={false}
             inline
             label={
-              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+              <Avatar
+                alt="user"
+                img={currentUser.rest.profilePicture}
+                rounded
+              />
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">@{currentUser.username}</span>
-              <span className="block text-sm font-medium truncate">
-                {currentUser.email}
+              <span className="block text-sm cursor-default">
+                @{currentUser.rest.userName}
+              </span>
+              <span className="block text-sm font-semibold cursor-default truncate">
+                {currentUser.rest.email}
               </span>
             </Dropdown.Header>
             <Link to={"/dashboard?tab=profile"}>
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
+            {currentUser.rest.isAdmin === true ? (
+              <Link to={"/create-post"}>
+                <Dropdown.Item>Create Post</Dropdown.Item>
+              </Link>
+            ) : null}
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
           </Dropdown>
