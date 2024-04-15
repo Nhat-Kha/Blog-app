@@ -4,30 +4,42 @@ const jwt = require("jsonwebtoken");
 const errorHandler = require("../utils/error");
 
 const signup = async (req, res, next) => {
-  const { userName, email, password } = req.body;
-
-  if (
-    !userName ||
-    !email ||
-    !password ||
-    userName === "" ||
-    email === "" ||
-    password === ""
-  ) {
-    next(errorHandler(400, "All fields are required"));
-  }
-
-  const hashedPassword = bcryptjs.hashSync(password, 10);
-
-  const newUser = new User({
-    userName,
-    email,
-    password: hashedPassword,
-  });
-
   try {
+    const { userName, email, password } = req.body;
+
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      userName === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already exists" });
+    }
+
+    const hashedPassword = await bcryptjs.hash(password, 10);
+
+    const newUser = new User({
+      userName,
+      email,
+      password: hashedPassword,
+    });
+
     await newUser.save();
-    res.json("Signup successful");
+
+    const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET);
+
+    res.status(201).json({
+      message: "Signup successful",
+      token,
+      _id: newUser._id,
+    });
   } catch (error) {
     next(error);
   }
@@ -56,12 +68,10 @@ const signin = async (req, res, next) => {
 
     const { password: pass, ...rest } = validUser._doc;
 
-    res
-      .status(200)
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
-      .json(rest);
+    res.json({
+      token: token,
+      rest,
+    });
   } catch (error) {
     next(error);
   }

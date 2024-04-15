@@ -1,4 +1,6 @@
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const errorHandler = require("../utils/error");
 const User = require("../model/user");
 
@@ -73,7 +75,10 @@ const getUser = async (req, res, next) => {
 };
 
 const updatedUser = async (req, res, next) => {
-  if (req.user.id !== req.params.userId) {
+  const user = req.user;
+  const data = req.body;
+
+  if (user._id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to update this user"));
   }
   if (req.body.password) {
@@ -91,30 +96,40 @@ const updatedUser = async (req, res, next) => {
     if (req.body.userName.includes(" ")) {
       return next(errorHandler(400, "Username cannot contain spaces"));
     }
-    if (req.body.username !== req.body.username.toLowerCase()) {
+    if (req.body.userName !== req.body.userName.toLowerCase()) {
       return next(errorHandler(400, "Username must be lowercase"));
     }
-    if (!req.body.username.match(/^[a-zA-Z0-9]+$/)) {
+    if (!req.body.userName.match(/^[a-zA-Z0-9]+$/)) {
       return next(
         errorHandler(400, "Username can only contain letters and numbers")
       );
     }
   }
   try {
-    const updateUser = await User.findByIdAndUpdate(
-      req.params.userId,
-      {
-        $set: {
-          username: req.body.username,
-          email: req.body.email,
-          profilePicture: req.body.profilePicture,
-          password: req.body.password,
-        },
-      },
-      { new: true }
-    );
-    const { password, ...rest } = updateUser._doc;
-    res.status(200).json(rest);
+    const updatedUser = await User.findOne({ _id: req.params.userId });
+    if (!updatedUser) {
+      return next(errorHandler(401, "user not found"));
+    }
+
+    if (data.email) {
+      updatedUser.email = data.email;
+    }
+    if (data.userName) {
+      updatedUser.userName = data.userName;
+    }
+    if (data.password) {
+      updatedUser.password = data.password;
+    }
+    if (data.profilePicture) {
+      updatedUser.profilePicture = data.profilePicture;
+    }
+
+    const token = jwt.sign({ _id: updatedUser._id }, process.env.JWT_SECRET);
+    const { password, ...rest } = updatedUser._doc;
+
+    await updatedUser.save();
+
+    res.status(200).json({ token, rest });
   } catch (error) {
     next(error);
   }
@@ -125,7 +140,7 @@ const deleteUser = async (req, res, next) => {
     return next(errorHandler(403, "You are not allowed to delete this user"));
   }
   try {
-    await User.findByIdAndDelete(req.params.userId);
+    await User.findByIdAndDelete({ _id: req.params.userId });
     res.status(200).json("User has been deleted");
   } catch (error) {
     next(error);
@@ -134,10 +149,7 @@ const deleteUser = async (req, res, next) => {
 
 const signout = async (req, res, next) => {
   try {
-    res
-      .clearCookie("access_token")
-      .status(200)
-      .json("User has been signed out");
+    res.status(200).json("User has been signed out");
   } catch (error) {
     next(error);
   }
