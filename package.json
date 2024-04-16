@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "build": "npm install && npm install --prefix client && npm run build --prefix client"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC",
