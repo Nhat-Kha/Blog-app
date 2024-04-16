@@ -7,23 +7,23 @@ const apiList = {
   LoginGoogle: `${server}/auth/google`,
   signOut: `${server}/user/signout`,
   getAllUser: `${server}/user/AllUser`,
-  getUser: `${server}/user/:userId`,
+  getUser: `${server}/user/`,
   updateUser: `${server}/user/update/`,
   deleteUser: `${server}/user/delete/:userId`,
   allUserOfAdmin: `${server}/user/allUserOfAdmin`,
 
   // COMMENT
   create: `${server}/comment/create`,
-  getPostComment: `${server}/comment/getPostComments/:postId`,
-  likeComment: `${server}/comment/likeComment/:commentId`,
-  deleteComment: `${server}/comment/deleteComment/:commentId`,
-  editComment: `${server}/comment/editComment/:commentId`,
+  getPostComment: `${server}/comment/getPostComments/`,
+  likeComment: `${server}/comment/likeComment/`,
+  deleteComment: `${server}/comment/deleteComment/`,
+  editComment: `${server}/comment/editComment/`,
   getComment: `${server}/comment/getcomments`,
 
   // POST
   createPost: `${server}/post/create`,
   getPost: `${server}/post/getposts`,
-  deletePost: `${server}/post/deletepost/:postId/:userId`,
+  deletePost: `${server}/post/deletepost`,
   updatePost: `${server}/post/updatepost/:postId/:userId`,
 };
 

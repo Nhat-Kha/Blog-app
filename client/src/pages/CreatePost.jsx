@@ -12,8 +12,12 @@ import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+import apiList from "../libs/apiList";
+import { useSelector } from "react-redux";
 
 export default function CreatePost() {
+  const { currentUser } = useSelector((state) => state.user);
+
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -61,10 +65,11 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/post/create", {
+      const res = await fetch(apiList.createPost, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${currentUser.token}`,
         },
         body: JSON.stringify(formData),
       });
