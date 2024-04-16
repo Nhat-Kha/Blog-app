@@ -19,8 +19,8 @@ const create = async (req, res, next) => {
     userId: req.user.id,
   });
   try {
-    const savedPost = await newPost.save();
-    res.status(201).json(savedPost);
+    await newPost.save();
+    res.status(201).json(newPost);
   } catch (error) {
     next(error);
   }
