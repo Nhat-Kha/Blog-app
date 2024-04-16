@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
-import PrivateRoute from "./components/ProtectRoute/PrivateRoute";
-import OnlyAdminPrivateRoute from "./components/ProtectRoute/OnlyAdminPrivateRoute";
 import FooterCom from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -13,7 +11,12 @@ import Projects from "./pages/Projects";
 import CreatePost from "./pages/CreatePost";
 import Search from "./pages/Search";
 import Logout from "./pages/Logout";
-import { PrivateRouteLogin } from "./components/ProtectRoute";
+import {
+  OnlyAdminPrivateRoute,
+  PrivateRoute,
+  PrivateRouteLogin,
+} from "./components/ProtectRoute";
+import PostPage from "./pages/PostPage";
 
 export default function App() {
   return (
@@ -37,7 +40,7 @@ export default function App() {
           <Route path="/update-post/:postId" />
         </Route>
         <Route path="/projects" element={<Projects />} />
-        <Route path="/post/:postSlug" />
+        <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
       <FooterCom />
     </BrowserRouter>
