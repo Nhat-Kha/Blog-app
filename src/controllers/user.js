@@ -37,14 +37,14 @@ const getAllUserOfAdmin = async (req, res, next) => {
       now.getDate()
     );
 
+    const lastMonthUsers = await User.countDocuments({
+      createdAt: { $gte: oneMonthAgo },
+    });
+
     res.status(200).json({
       users: usersWithoutPassword,
       totalUsers,
       lastMonthUsers,
-    });
-
-    const lastMonthUsers = await User.countDocuments({
-      createdAt: { $gte: oneMonthAgo },
     });
   } catch (error) {
     next(error);
