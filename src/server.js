@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
-app.listen(3000, () => {
-  console.log("Server is connect port 3000");
+app.listen(8000, () => {
+  console.log("Server is connect port 8000");
 });
 
 app.get("/", (req, res) => res.send({ message: "App worked successfully" }));
