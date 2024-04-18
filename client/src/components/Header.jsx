@@ -51,20 +51,21 @@ export default function Header() {
     navigate(`/search/${searchQuery}`);
   };
 
-  console.log("currentUser: ", currentUser);
-
   return (
-    <Navbar className="border-b-2">
-      <Link
-        to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
-      >
-        <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-          Ricky's
-        </span>
-        Blog
+    <Navbar className="border-b-2 transition duration-300 bg-gray-50 dark:bg-gray-800">
+      <Link to="/" className="text-sm sm:text-xl font-semibold dark:text-white">
+        <div className="flex border-[3px] dark:border-[3px] w-40 h-full flex-row justify-center border-black dark:border-white transition duration-400">
+          <div className="w-full flex justify-center items-center bg-white dark:bg-black">
+            <span className="font-bold dark:font-bold text-xl dark:text-xl text-black dark:text-white">
+              BLOG
+            </span>
+          </div>
+          <div className="flex justify-center items-center w-full bg-black dark:bg-white">
+            <span className="text-white dark:text-gray-800">Ricky's</span>
+          </div>
+        </div>
       </Link>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="w-2/4">
         <TextInput
           type="text"
           placeholder="Search..."
