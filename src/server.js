@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+// const http = require("http");
 
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
@@ -22,6 +23,7 @@ mongoose
   });
 
 const app = express();
+// const httpServer = http.createServer(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

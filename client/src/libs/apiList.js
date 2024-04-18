@@ -1,4 +1,5 @@
-export const server = "http://localhost:3000/api";
+export const server = "http://localhost:8000/api";
+// "https://blog-app-ucnt.onrender.com/api";
 
 const apiList = {
   // AUTH and USER

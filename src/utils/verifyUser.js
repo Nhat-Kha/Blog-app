@@ -21,4 +21,17 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+// const verifyAccessTokenIO = (token) => {
+//   if (!token) return createError.Unauthorized();
+
+//   return jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+//     if (err) {
+//       const message =
+//         err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
+//       return createError.Unauthorized(message);
+//     }
+//     return payload;
+//   });
+// };
+
 module.exports = verifyToken;

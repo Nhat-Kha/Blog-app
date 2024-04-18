@@ -77,6 +77,9 @@ const getUser = async (req, res, next) => {
 const updatedUser = async (req, res, next) => {
   const user = req.user;
   const data = req.body;
+  console.log(user);
+
+  console.log(user._id);
 
   if (user._id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to update this user"));
