@@ -8,21 +8,32 @@ export default function CallToAction() {
         <p className="text-gray-500 my-2">
           Checkout these resources with 100 JavaScript Projects
         </p>
-        <Button
-          gradientDuoTone="purpleToPink"
-          className="rounded-tl-xl rounded-bl-none"
-        >
-          <a
-            href="https://www.100jsprojects.com"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="flex justify-center items-center">
+          <button
+            className="w-2/4 relative flex items-center justify-center p-0.5 mb-2 me-2 
+        overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br
+        from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500
+        hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 
+        dark:focus:ring-blue-800"
           >
-            100 JavaScript Projects
-          </a>
-        </Button>
+            <span
+              className="relative px-5 py-2.5 transition-all ease-in duration-75 
+          bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 w-full"
+            >
+              <a
+                href="https://www.100jsprojects.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                100 JavaScript Projects
+              </a>
+            </span>
+          </button>
+        </div>
       </div>
       <div className="p-7 flex-1">
         <img
+          className="rounded-2xl"
           src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg"
           alt=""
         />

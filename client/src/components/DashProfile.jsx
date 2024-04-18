@@ -50,8 +50,6 @@ export default function DashProfile() {
     }
   }, [imageFile]);
 
-  console.log(currentUser);
-
   const uploadImage = async () => {
     // service firebase.storage {
     //   match /b/{bucket}/o {
@@ -96,6 +94,8 @@ export default function DashProfile() {
     );
   };
 
+  console.log(imageFile);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -131,7 +131,6 @@ export default function DashProfile() {
         dispatch(updateSuccess(data));
         setUpdateUserSuccess("User's profile updated successfully");
       }
-      console.log(data);
     } catch (error) {
       dispatch(updateFailure(error.message));
       setUpdateUserError(error.message);
