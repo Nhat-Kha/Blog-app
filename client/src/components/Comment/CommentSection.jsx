@@ -128,6 +128,10 @@ export default function CommentSection({ postId, post }) {
       }
       const res = await fetch(`${apiList.deleteComment}${commentId}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${currentUser.token}`,
+          "Content-Type": "application/json",
+        },
       });
       if (res.ok) {
         const data = await res.json();
