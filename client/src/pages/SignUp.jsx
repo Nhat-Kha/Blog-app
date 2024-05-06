@@ -45,15 +45,23 @@ export default function SignUp() {
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
         {/* left */}
         <div className="flex-1">
-          <Link to="/" className="font-bold dark:text-white text-4xl">
-            <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-              Ricky's
-            </span>
-            Blog
+          <Link
+            to="/"
+            className="text-sm sm:text-xl font-semibold dark:text-white"
+          >
+            <div className="flex border-[3px] dark:border-[3px] w-40 h-full flex-row justify-center border-black dark:border-white transition duration-400">
+              <div className="w-full flex justify-center items-center bg-white dark:bg-black">
+                <span className="font-bold dark:font-bold text-xl dark:text-xl text-black dark:text-white">
+                  BLOG
+                </span>
+              </div>
+              <div className="flex justify-center items-center w-full bg-black dark:bg-white">
+                <span className="text-white dark:text-gray-800">Ricky's</span>
+              </div>
+            </div>
           </Link>
-          <p className="text-sm mt-5">
-            This is a demo project. You can sign up with your email and password
-            or with Google.
+          <p className="text-sm mt-5 text-black dark:text-gray-300">
+            You can sign up with your email and password or with Google.
           </p>
         </div>
         {/* right */}

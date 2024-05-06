@@ -7,3 +7,5 @@ import { firebaseConfig } from "./config.js";
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+
