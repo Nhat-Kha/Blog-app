@@ -55,12 +55,13 @@ export default function DashComments() {
   const handleDeleteComment = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(
-        `/api/comment/deleteComment/${commentIdToDelete}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const res = await fetch(`${apiList.deleteComment}${commentIdToDelete}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${currentUser.token}`,
+          "Content-Type": "application/json",
+        },
+      });
       const data = await res.json();
       if (res.ok) {
         setComments((prev) =>
@@ -74,6 +75,8 @@ export default function DashComments() {
       console.log(error.message);
     }
   };
+
+  console.log("id", comments._id);
 
   return (
     <div className="table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
