@@ -72,6 +72,8 @@ const signin = async (req, res, next) => {
       token: token,
       rest,
     });
+
+    console.log(validUser);
   } catch (error) {
     next(error);
   }
@@ -86,13 +88,11 @@ const google = async (req, res, next) => {
         { id: user._id, isAdmin: user.isAdmin },
         process.env.JWT_SECRET
       );
-      const { password, ...rest } = user._doc;
-      res
-        .status(200)
-        .cookie("access_token", token, {
-          httpOnly: true,
-        })
-        .json(rest);
+      const { password: pass, ...rest } = user._doc;
+      res.json({
+        token: token,
+        rest,
+      });
     } else {
       const generatedPassword =
         Math.random.toString(36).slice(-8) + Math.random.toString(36).slice(-8);
@@ -110,14 +110,14 @@ const google = async (req, res, next) => {
         { id: newUser._id, isAdmin: newUser.isAdmin },
         process.env.JWT_SECRET
       );
-      const { password, ...rest } = newUser._doc;
-      res
-        .status(200)
-        .cookie("access_token", token, {
-          httpOnly: true,
-        })
-        .json(rest);
+      const { password: pass, ...rest } = newUser._doc;
+
+      res.json({
+        token: token,
+        rest,
+      });
     }
+    console.log(user);
   } catch (error) {
     next(error);
   }
