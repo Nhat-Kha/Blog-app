@@ -6,7 +6,8 @@ export default function CallToAction() {
       <div className="flex-1 justify-center flex flex-col">
         <h2 className="text-2xl">Want to learn more about JavaScript?</h2>
         <p className="text-gray-500 my-2">
-          Checkout these resources with 100 JavaScript Projects
+          Checkout these resources with 100 JavaScript Algorithms and Data
+          Structures (Beta)
         </p>
         <div className="flex justify-center items-center">
           <button
@@ -21,7 +22,7 @@ export default function CallToAction() {
           bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 w-full"
             >
               <a
-                href="https://www.100jsprojects.com"
+                href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -34,7 +35,7 @@ export default function CallToAction() {
       <div className="p-7 flex-1">
         <img
           className="rounded-2xl"
-          src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg"
+          src="https://miro.medium.com/v2/resize:fit:3840/format:webp/1*TKXSmO_vghw2G5aDRcf2Ww.png"
           alt=""
         />
       </div>

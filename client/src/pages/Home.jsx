@@ -6,6 +6,7 @@ import apiList from "../libs/apiList";
 import { useSelector } from "react-redux";
 import home from "../assets/avatar-home.jpg";
 import home1 from "../assets/programmer-wallpaper-preview.jpg";
+import Layout from "../components/layout";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -65,11 +66,11 @@ export default function Home() {
         <CallToAction />
       </div>
 
-      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
+      <div className="max-w-full p-3 flex flex-col gap-8 py-7">
         {posts && posts.length > 0 && (
-          <div className="flex flex-col gap-6">
-            <h2 className="text-2xl font-semibold text-center">Recent Posts</h2>
-            <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col justify-center items-center mb-5">
+            <h1 className="text-xl mt-5">Recent Posts</h1>
+            <div className="grid grid-cols-3 gap-5 mt-5 justify-center items-start">
               {posts.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

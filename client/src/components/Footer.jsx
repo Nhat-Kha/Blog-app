@@ -6,15 +6,21 @@ export default function FooterCom() {
     <Footer container className="border border-t-8 border-teal-500">
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid w-full justify-between sm:flex md:grid-cols-1">
-          <div className="mt-5">
+          <div className="mt-5 h-10">
             <Link
               to="/"
-              className="self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white"
+              className="text-sm sm:text-xl font-semibold dark:text-white"
             >
-              <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-                Ricky's
-              </span>
-              Blog
+              <div className="flex border-[3px] dark:border-[3px] w-40 h-full flex-row justify-center border-black dark:border-white transition duration-400">
+                <div className="w-full flex justify-center items-center bg-white dark:bg-black">
+                  <span className="font-bold dark:font-bold text-xl dark:text-xl text-black dark:text-white">
+                    BLOG
+                  </span>
+                </div>
+                <div className="flex justify-center items-center w-full bg-black dark:bg-white">
+                  <span className="text-white dark:text-gray-800">Ricky's</span>
+                </div>
+              </div>
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6">

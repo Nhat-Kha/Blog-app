@@ -1,3 +1,5 @@
+import Container from "../components/container/Container";
+
 export default function About() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -6,6 +8,7 @@ export default function About() {
           <h1 className="text-3xl font font-semibold text-center my-7">
             About Ricky' Blog
           </h1>
+
           <div className="text-md text-gray-500 flex flex-col gap-6">
             <p>
               Welcome to Ricky's Blog! This blog was created by Ricky Nguyen as
@@ -13,14 +16,14 @@ export default function About() {
               Sahand is a passionate developer who loves to write about
               technology, coding, and everything in between.
             </p>
-
-            <p>
-              On this blog, you'll find weekly articles and tutorials on topics
-              such as web development, software engineering, and programming
-              languages. I'm always learning and exploring new technologies, so
-              be sure to check back often for new content!
-            </p>
-
+            <Container>
+              <p>
+                On this blog, you'll find weekly articles and tutorials on
+                topics such as web development, software engineering, and
+                programming languages. I'm always learning and exploring new
+                technologies, so be sure to check back often for new content!
+              </p>
+            </Container>
             <p>
               We encourage you to leave comments on our posts and engage with
               other readers. You can like other people's comments and reply to
