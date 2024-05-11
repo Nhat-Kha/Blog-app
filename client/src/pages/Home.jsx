@@ -6,7 +6,6 @@ import apiList from "../libs/apiList";
 import { useSelector } from "react-redux";
 import home from "../assets/avatar-home.jpg";
 import home1 from "../assets/programmer-wallpaper-preview.jpg";
-import Layout from "../components/layout";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
